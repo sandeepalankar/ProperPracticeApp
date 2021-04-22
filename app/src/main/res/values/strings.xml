@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Proper Practice</string>
+    <string name="testing_123">Testing 123</string>
+    <string name="college_campus">College Campus</string>
+    <string name="grocery_store">Grocery Store</string>
+    <string name="hiking_path">Hiking Path</string>
+    <string name="welcome_to_proper_practice">Proper Practice</string>
+    <string name="please_select_the_location_you_would_like_to_play_in">Select the Location you would like to play in:</string>
+    <string name="TutorialToast"> To view the Tutorial, Please click the i in the bottom right!</string>
+    <string name="todo">TODO</string>
+    <string name="todo2">TODO</string>
+    <string name="alert_title_item">Tutorial Info!</string>
+    <string name="thankyou">Thank you for reading the tutorial!</string>
+    <string name="close">Close</string>
+    <string name="OK">Ok</string>
+    <string name="tutorial_message_item">Instructions: To move your character up and down, tap on the left half of the screen.
+                                            Make sure to avoid all the obstacles and collect the items you need to stay safe.
+                                            Enjoy! </string>
+</resources>
