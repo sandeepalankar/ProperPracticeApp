@@ -13,12 +13,13 @@ public class Powerup {
 
     public int speed = 20;
     int x = 0, y, powerupWidth, powerupHeight, powerupCounter = 1;
-    Bitmap powerup1, powerup2, powerup3, powerup4, powerup5;
+    Bitmap powerup1, powerup2, powerup3, powerup4, powerup5, powerup6, powerup7;
 
     Powerup (Resources res) {
 
-        int[] powerupArray = {R.drawable.banana, R.drawable.chicken, R.drawable.milk,
-                R.drawable.broccoli, R.drawable.bread, R.drawable.sanitizer, R.drawable.mask};
+        int[] powerupArray = {R.drawable.sanitizer, R.drawable.banana, R.drawable.mask,
+                R.drawable.broccoli, R.drawable.sanitizer1, R.drawable.chicken,
+                R.drawable.milk};
 
         Random rand = new Random();
         int s = rand.nextInt(7);
@@ -28,12 +29,14 @@ public class Powerup {
         powerup3 = BitmapFactory.decodeResource(res, powerupArray[s]);
         powerup4 = BitmapFactory.decodeResource(res, powerupArray[s]);
         powerup5 = BitmapFactory.decodeResource(res, powerupArray[s]);
+        powerup6 = BitmapFactory.decodeResource(res, powerupArray[s]);
+        powerup7 = BitmapFactory.decodeResource(res, powerupArray[s]);
 
         powerupWidth = powerup1.getWidth();
         powerupHeight = powerup1.getHeight();
 
-        powerupWidth /= 4;
-        powerupHeight /= 4;
+        powerupWidth /= 7;
+        powerupHeight /= 7;
 
         powerupWidth = (int) (powerupWidth * screenRatioX);
         powerupHeight = (int) (powerupHeight * screenRatioY);
@@ -43,6 +46,8 @@ public class Powerup {
         powerup3 = Bitmap.createScaledBitmap(powerup3, powerupWidth, powerupHeight, false);
         powerup4 = Bitmap.createScaledBitmap(powerup4, powerupWidth, powerupHeight, false);
         powerup5 = Bitmap.createScaledBitmap(powerup5, powerupWidth, powerupHeight, false);
+        powerup6 = Bitmap.createScaledBitmap(powerup6, powerupWidth, powerupHeight, false);
+        powerup7 = Bitmap.createScaledBitmap(powerup7, powerupWidth, powerupHeight, false);
 
         y = -powerupHeight;
     }
@@ -68,8 +73,18 @@ public class Powerup {
                 return powerup4;
             }
 
+            if (powerupCounter == 5) {
+                powerupCounter++;
+                return powerup5;
+            }
+
+            if (powerupCounter == 6) {
+                powerupCounter++;
+                return powerup6;
+            }
+
             powerupCounter = 1;
-            return powerup5;
+            return powerup7;
         }
 
     Rect getCollisionShape () {

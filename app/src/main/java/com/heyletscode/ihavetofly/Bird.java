@@ -13,23 +13,19 @@ public class Bird {
 
     public int speed = 20;
     public boolean wasShot = true;
-    int x = 0, y, width, height, birdCounter = 1;
-    Bitmap bird1, bird2, bird3, bird4, bird5, bird6, bird7, bird8, bird9, bird10, bird11, bird12,
-            bird13, bird14, bird15, bird16, bird17, bird18;
+    int x = 0, y, width, height, wBorder, hBorder, birdCounter = 1;
+    Bitmap bird1, bird2, bird3, bird4, bird5, bird6, bird7, bird8, bird9, bird10, bird11, bird12;
+
     Bird (Resources res) {
 
-        int[] customerArray = {R.drawable.green, R.drawable.green_2,
-                R.drawable.mohawk, R.drawable.mohawk_2_cart,
-                R.drawable.mohawk_cart, R.drawable.nm_green,
-                R.drawable.nm_green_2, R.drawable.nm_mohawk,
-                R.drawable.nm_mohawk_cart, R.drawable.covid, R.drawable.nm_purple,
-                R.drawable.nm_purple_cart, R.drawable.nm_red_2_cart,
-                R.drawable.nm_red_cart, R.drawable.purple,
-                R.drawable.purple_2, R.drawable.red_2_cart,
-                R.drawable.red_cart, R.drawable.covid};
+        int[] customerArray = {R.drawable.green_mohawk_blue_shirt,
+                R.drawable.long_blonde_grocery_cart, R.drawable.zebra_mohawk_white_shirt,
+                 R.drawable.nm_green, R.drawable.covid, R.drawable.nm_mohawk,
+                R.drawable.nm_mohawk_cart, R.drawable.nm_purple,
+                R.drawable.zebra_mohawk_grocery_cart, R.drawable.nm_red_2_cart};
 
         Random rand = new Random();
-        int n = rand.nextInt(18);
+        int n = rand.nextInt(10);
 
         bird1 = BitmapFactory.decodeResource(res, customerArray[n]);
         bird2 = BitmapFactory.decodeResource(res, customerArray[n]);
@@ -41,14 +37,6 @@ public class Bird {
         bird8 = BitmapFactory.decodeResource(res, customerArray[n]);
         bird9 = BitmapFactory.decodeResource(res, customerArray[n]);
         bird10 = BitmapFactory.decodeResource(res, customerArray[n]);
-        bird11 = BitmapFactory.decodeResource(res, customerArray[n]);
-        bird12 = BitmapFactory.decodeResource(res, customerArray[n]);
-        bird13 = BitmapFactory.decodeResource(res, customerArray[n]);
-        bird14 = BitmapFactory.decodeResource(res, customerArray[n]);
-        bird15 = BitmapFactory.decodeResource(res, customerArray[n]);
-        bird16 = BitmapFactory.decodeResource(res, customerArray[n]);
-        bird17 = BitmapFactory.decodeResource(res, customerArray[n]);
-        bird18 = BitmapFactory.decodeResource(res, customerArray[n]);
 
         width = bird1.getWidth();
         height = bird1.getHeight();
@@ -69,14 +57,6 @@ public class Bird {
         bird8 = Bitmap.createScaledBitmap(bird8, width, height, false);
         bird9 = Bitmap.createScaledBitmap(bird9, width, height, false);
         bird10 = Bitmap.createScaledBitmap(bird10, width, height, false);
-        bird11 = Bitmap.createScaledBitmap(bird11, width, height, false);
-        bird12 = Bitmap.createScaledBitmap(bird12, width, height, false);
-        bird13 = Bitmap.createScaledBitmap(bird13, width, height, false);
-        bird14 = Bitmap.createScaledBitmap(bird14, width, height, false);
-        bird15 = Bitmap.createScaledBitmap(bird15, width, height, false);
-        bird16 = Bitmap.createScaledBitmap(bird16, width, height, false);
-        bird17 = Bitmap.createScaledBitmap(bird17, width, height, false);
-        bird18 = Bitmap.createScaledBitmap(bird18, width, height, false);
 
         y = -height;
     }
@@ -128,48 +108,8 @@ public class Bird {
             return bird9;
         }
 
-        if (birdCounter == 10) {
-            birdCounter++;
-            return bird10;
-        }
-
-        if (birdCounter == 11) {
-            birdCounter++;
-            return bird11;
-        }
-
-        if (birdCounter == 12) {
-            birdCounter++;
-            return bird12;
-        }
-
-        if (birdCounter == 13) {
-            birdCounter++;
-            return bird13;
-        }
-
-        if (birdCounter == 14) {
-            birdCounter++;
-            return bird14;
-        }
-
-        if (birdCounter == 15) {
-            birdCounter++;
-            return bird15;
-        }
-
-        if (birdCounter == 16) {
-            birdCounter++;
-            return bird16;
-        }
-
-        if (birdCounter == 17) {
-            birdCounter++;
-            return bird17;
-        }
-
         birdCounter = 1;
-        return bird18;
+        return bird10;
     }
 
     Rect getCollisionShape () {

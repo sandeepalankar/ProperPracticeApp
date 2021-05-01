@@ -111,16 +111,16 @@ public class GameView extends SurfaceView implements Runnable {
 
     private void update () {
 
-        background1.x -= 10 * screenRatioX;
-        background2.x -= 10 * screenRatioX;
-
-        if (background1.x + background1.background.getWidth() < 0) {
-            background1.x = screenX;
-        }
-
-        if (background2.x + background2.background.getWidth() < 0) {
-            background2.x = screenX;
-        }
+            background1.x -= (10 * screenRatioX);
+            if (background1.x + this.screenX < 0){
+                background1.x = screenX;
+            }
+            if (background1.x < 0) {
+                background2.x = background1.x + this.screenX;
+            }
+            else {
+                background2.x = background1.x - this.screenX;
+            }
 
         if (flight.isGoingUp)
             flight.y -= 30 * screenRatioY;
@@ -148,7 +148,7 @@ public class GameView extends SurfaceView implements Runnable {
                 if (Rect.intersects(bird.getCollisionShape(),
                         bullet.getCollisionShape())) {
 
-                    score++;
+                    score+=50;
                     bird.x = -500;
                     bullet.x = screenX + 500;
                     bird.wasShot = true;
@@ -158,17 +158,6 @@ public class GameView extends SurfaceView implements Runnable {
 
         for (Bullet bullet : trash)
             bullets.remove(bullet);
-
-        for (Powerup powerup : powerups) {
-
-            if (Rect.intersects(powerup.getCollisionShape(),
-                    flight.getCollisionShape())) {
-
-                score+=10;
-                powerup.x = -500;
-                powerup.x = screenX + 500;
-            }
-        }
 
         for (Bird bird : birds) {
 
@@ -192,6 +181,32 @@ public class GameView extends SurfaceView implements Runnable {
 
                 isGameOver = true;
                 return;
+            }
+
+        }
+
+        for (Powerup powerup : powerups) {
+
+            powerup.x -= powerup.speed;
+
+            if (powerup.x + powerup.powerupWidth < 0) {
+
+                int bound = (int) (30 * screenRatioX);
+                powerup.speed = random.nextInt(bound);
+
+                if (powerup.speed < 10 * screenRatioX)
+                    powerup.speed = (int) (10 * screenRatioX);
+
+                powerup.x = screenX;
+                powerup.y = random.nextInt(screenY - powerup.powerupHeight);
+
+            }
+
+            if (Rect.intersects(powerup.getCollisionShape(), flight.getCollisionShape())) {
+
+                score+=10;
+                powerup.x = -500;
+                powerup.x = screenX + 500;
             }
 
         }
